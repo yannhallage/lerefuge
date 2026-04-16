@@ -20,6 +20,7 @@ vendor/
 yarn-debug.log*
 yarn-error.log*
 email.php
+working-on-images/
 handler.php
 # Environment / secrets
 .env
