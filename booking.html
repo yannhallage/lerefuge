@@ -128,7 +128,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 text-center">
-                            <h1>Reservation</h1>
+                            <!-- <h1>Reservation</h1> -->
                         </div>
                     </div>
                 </div>
@@ -216,7 +216,7 @@
                                         </div>
 
                                         <div class="col-md-12">
-                                            <div class="g-recaptcha" data-sitekey="copy-your-site-key-here"></div>
+                                            <!-- <div class="g-recaptcha" data-sitekey="copy-your-site-key-here"></div> -->
                                             <p id='submit' class="mt20">
                                                 <input type='submit' id='send_message' value='Envoyer le formulaire' class="btn btn-line">
                                             </p>
@@ -261,6 +261,51 @@
         <script src="js/plugins.js"></script>
         <script src="js/designesia.js"></script>
         <script src='https://www.google.com/recaptcha/api.js' async defer></script>
+        <script>
+            (function () {
+                "use strict";
+
+                function normalize(value) {
+                    return String(value || "")
+                        .normalize("NFD")
+                        .replace(/[\u0300-\u036f]/g, "")
+                        .toLowerCase()
+                        .trim();
+                }
+
+                function selectRoomFromUrl() {
+                    var params = new URLSearchParams(window.location.search);
+                    var roomFromUrl = params.get("room");
+                    if (!roomFromUrl) {
+                        return;
+                    }
+
+                    var select = document.getElementById("room-type");
+                    if (!select) {
+                        return;
+                    }
+
+                    var target = normalize(roomFromUrl);
+                    var options = Array.from(select.options);
+                    var matchedOption = options.find(function (option) {
+                        return normalize(option.value) === target || normalize(option.textContent) === target;
+                    });
+
+                    if (matchedOption) {
+                        select.value = matchedOption.value;
+                        return;
+                    }
+
+                    var newOption = document.createElement("option");
+                    newOption.value = roomFromUrl;
+                    newOption.textContent = roomFromUrl;
+                    newOption.selected = true;
+                    select.appendChild(newOption);
+                }
+
+                document.addEventListener("DOMContentLoaded", selectRoomFromUrl);
+            })();
+        </script>
         <script src="form.js"></script>
     </body>
 </html>

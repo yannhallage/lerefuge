@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>Le Refuge du Bandama</title>
-        <link rel="icon" href="images/icon.png" type="image/gif" sizes="16x16">
+        <link rel="icon" href="" type="image/gif" sizes="16x16">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="keywords" content="">
@@ -18,6 +18,45 @@
 
         <!-- color scheme -->
         <link rel="stylesheet" href="css/colors/brown.css" type="text/css" id="colors">
+        <style>
+            /* Stabilise le rendu desktop du slider detail logement. */
+            #carousel-rooms:not(.owl-loaded) .item {
+                display: none;
+            }
+
+            #carousel-rooms:not(.owl-loaded) .item:first-child {
+                display: block;
+            }
+
+            #section-main .d-carousel {
+                max-width: 1080px;
+                margin: 0 auto 26px;
+            }
+
+            #carousel-rooms .item .picframe {
+                height: 520px;
+                overflow: hidden;
+            }
+
+            #carousel-rooms .item .picframe img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+            }
+
+            .d-room-details .de-flex-col {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+            }
+
+            @media (max-width: 991px) {
+                #carousel-rooms .item .picframe {
+                    height: 320px;
+                }
+            }
+        </style>
     </head>
 
     <body>
@@ -40,11 +79,9 @@
                     <div class="row-fluid">
                         <div class="col-md-12">
                             <!-- logo begin -->
-                            <div id="logo">
-                                <a href="index.html">
-                                    <img class="logo" src="images/logo.png" alt="">
-                                </a>
-                            </div>
+                            <a href="index.html">
+                                <img class="logo" src="images/lerefuge-copie.png" style="width: 120px; height: 150px;" alt="">
+                            </a>
                             <!-- logo close -->
 
                             <!-- small button begin -->
@@ -73,7 +110,7 @@
                             <div class="pt80 pb80">
                                 <div class="mo-nav text-center">
                                     <a href="index.html">
-                                        <img class="logo" src="images/logo.png" alt="">
+                                        <img class="logo" src="images/lerefuge-copie.png" alt="">
                                     </a>
 
                                     <div class="spacer-single"></div>
@@ -128,8 +165,8 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 text-center">
-                            <h4>Luxe</h4>
-                            <h1>Suite</h1>
+                            <h4 id="room-single-category">Logement</h4>
+                            <h1 id="room-single-title">Chargement...</h1>
                         </div>
                     </div>
                 </div>
@@ -142,7 +179,6 @@
                             <div class="de-content-overlay">
                             <div class="d-carousel wow fadeInRight" data-wow-delay="2s">
                                 <div id="carousel-rooms" class="owl-carousel owl-theme">
-
                                     <div class="item">
                                         <div class="picframe">
                                             <a class="image-popup-gallery" href="images/room-single/pf%20(1).jpg">
@@ -150,115 +186,11 @@
                                                     <span class="pf_title">
                                                         <i class="icon_search"></i>
                                                     </span>
-                                                    <span class="pf_caption">
-                                                        Lit king size
-                                                    </span>
+                                                    <span class="pf_caption">Chargement</span>
                                                 </span>
                                             </a>
 
                                             <img src="images/room-single/pf%20(1).jpg" alt="">
-                                        </div>
-                                    </div>
-
-                                    <div class="item">
-                                        <div class="picframe">
-                                            <a class="image-popup-gallery" href="images/room-single/pf%20(2).jpg">
-                                                <span class="overlay">
-                                                    <span class="pf_title">
-                                                        <i class="icon_search"></i>    
-                                                    </span>   
-                                                    <span class="pf_caption">
-                                                        Balcon avec vue sur l ocean
-                                                    </span> 
-                                                </span>
-                                            </a>
-
-                                            <img src="images/room-single/pf%20(2).jpg" alt="">
-                                        </div>
-                                    </div>
-
-                                    <div class="item">
-                                        <div class="picframe">
-                                            <a class="image-popup-gallery" href="images/room-single/pf%20(3).jpg">
-                                                <span class="overlay">
-                                                    <span class="pf_title">
-                                                        <i class="icon_search"></i>    
-                                                    </span> 
-                                                    <span class="pf_caption">
-                                                        Grande salle de bain
-                                                    </span>   
-                                                </span>
-                                            </a>
-
-                                            <img src="images/room-single/pf%20(3).jpg" alt="">
-                                        </div>
-                                    </div>
-
-                                    <div class="item">
-                                        <div class="picframe">
-                                            <a class="image-popup-gallery" href="images/room-single/pf%20(4).jpg">
-                                                <span class="overlay">
-                                                    <span class="pf_title">
-                                                        <i class="icon_search"></i>    
-                                                    </span>
-                                                    <span class="pf_caption">
-                                                        Piscine
-                                                    </span>   
-                                                </span>
-                                            </a>
-
-                                            <img src="images/room-single/pf%20(4).jpg" alt="">
-                                        </div>
-                                    </div>
-
-                                    <div class="item">
-                                        <div class="picframe">
-                                            <a class="image-popup-gallery" href="images/room-single/pf%20(5).jpg">
-                                                <span class="overlay">
-                                                    <span class="pf_title">
-                                                        <i class="icon_search"></i>    
-                                                    </span>
-                                                    <span class="pf_caption">
-                                                        Detente
-                                                    </span>    
-                                                </span>
-                                            </a>
-
-                                            <img src="images/room-single/pf%20(5).jpg" alt="">
-                                        </div>
-                                    </div>
-
-                                    <div class="item">
-                                        <div class="picframe">
-                                            <a class="image-popup-gallery" href="images/room-single/pf%20(6).jpg">
-                                                <span class="overlay">
-                                                    <span class="pf_title">
-                                                        <i class="icon_search"></i>    
-                                                    </span>
-                                                    <span class="pf_caption">
-                                                        Massage gratuit
-                                                    </span>        
-                                                </span>
-                                            </a>
-
-                                            <img src="images/room-single/pf%20(6).jpg" alt="">
-                                        </div>
-                                    </div>
-
-                                    <div class="item">
-                                        <div class="picframe">
-                                            <a class="image-popup-gallery" href="images/room-single/pf%20(7).jpg">
-                                                <span class="overlay">
-                                                    <span class="pf_title">
-                                                        <i class="icon_search"></i>    
-                                                    </span>
-                                                    <span class="pf_caption">
-                                                        Lit supplementaire
-                                                    </span>  
-                                                </span>
-                                            </a>
-
-                                            <img src="images/room-single/pf%20(7).jpg" alt="">
                                         </div>
                                     </div>
 
@@ -272,13 +204,13 @@
                                     <div class="col-md-12">
                                         <div class="d-room-details de-flex">
                                             <div class="de-flex-col">
-                                                <img src="images/ui/user.svg" alt="">4 personnes
+                                                <img src="images/ui/user.svg" alt=""><span id="room-single-capacity">-</span> personnes
                                             </div>
                                             <div class="de-flex-col">
-                                                <img src="images/ui/floorplan.svg" alt="">70 ft
+                                                <img src="images/ui/floorplan.svg" alt=""><span id="room-single-surface">-</span> m2
                                             </div>
                                             <div class="de-flex-col">
-                                                <img src="images/ui/bed.svg" alt="">$79 / Night
+                                                <img src="images/ui/bed.svg" alt=""><span id="room-single-price">-</span> FCFA
                                             </div>
                                             <div class="de-flex-col">
                                                 <a href="booking.html" class="btn-main"><span>Reserver maintenant</span></a>
@@ -287,18 +219,12 @@
                                     </div>
                                     <div class="col-md-8">
                                         <h3>Apercu de la chambre</h3>
-                                        <p>Amet nulla officia duis reprehenderit do labore aute pariatur anim consequat ullamco elit in duis incididunt eu officia do voluptate anim nulla officia id cillum esse in velit anim dolor enim exercitation veniam do deserunt dolor in id dolor culpa reprehenderit aute cillum amet sunt mollit incididunt quis qui ut enim adipisicing nostrud aliquip esse nostrud duis enim nisi id in est ea incididunt pariatur non aute ullamco dolor est duis ut sint magna sint laboris dolore nulla et ut reprehenderit dolore consequat magna aliqua dolor in cupidatat ut consequat amet eiusmod qui adipisicing deserunt ullamco est mollit mollit tempor cillum enim est consectetur pariatur nulla fugiat deserunt dolore nisi laboris pariatur et nisi fugiat dolore cupidatat id consectetur aliqua in adipisicing enim in ullamco do id sit nulla sint ea ea pariatur adipisicing dolor tempor dolor eiusmod non.</p>
+                                        <p id="room-single-description">Chargement de la description...</p>
                                     </div>
                                     <div class="col-md-4">
                                         <h3>Equipements de la chambre</h3>
-                                        <ul class="ul-style-2">
-                                            <li>48" HD TV with more than 60 channels</li>
-                                            <li>Cafetiere et theiere</li>
-                                            <li>Hot &amp; cold bathing</li>
-                                            <li>High comfortable mattress bed</li>
-                                            <li>Hight quality bed sheets</li>
-                                            <li>Connexion WIFI gratuite</li>
-                                            <li>Chambre communicante sur demande</li>
+                                        <ul class="ul-style-2" id="room-single-specs">
+                                            <li>Chargement des equipements...</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -335,6 +261,9 @@
 
         <!-- Javascript Files
     ================================================== -->
+        <script src="js/config.js"></script>
+        <script src="js/api/logementApi.js"></script>
+        <script src="js/room-single.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/designesia.js"></script>
     </body>

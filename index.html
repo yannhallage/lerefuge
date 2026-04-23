@@ -157,51 +157,9 @@
         <!-- Supersized -->
         <script src='js/supersized/js/supersized.3.2.7.js'></script>
         <script src='js/supersized/theme/supersized.shutter.min.js'></script>
-
-        <script>
-            jQuery(function($){
-                                                        
-                    var slides=[];
-                    slides.push({image : 'https://res.cloudinary.com/dpls5pv5x/image/upload/q_auto/f_auto/v1776356904/e2hbjz26coogpuvm1rrr.png', title : "<div class='slider-text'><h2 class='wow fadeInUp'>Detente</h2><a class='btn-line wow fadeInUp' data-wow-delay='.3s' href='about.html'><span>Nos installations</span></a></div>", thumb : '', url : ''});  
-
-                    slides.push({image : 'https://res.cloudinary.com/dpls5pv5x/image/upload/q_auto/f_auto/v1776356714/vdejggo2sgjcr2lmn9zt.jpg', title : "<div class='slider-text'><h2 class='wow fadeInUp'>Comfort</h2><a class='btn-line wow fadeInUp' data-wow-delay='.3s' href='room-2-cols.html'><span>Choisir une chambre</span></a></div>", thumb : '', url : ''});
-                    
-                    slides.push({image : 'https://res.cloudinary.com/dpls5pv5x/image/upload/q_auto/f_auto/v1776356720/vec4powfapnoqqtfoy3j.webp', title : "<div class='slider-text'><h2 class='wow fadeInUp'>Heureux</h2><a class='btn-line wow fadeInUp' data-wow-delay='.3s' href='about.html'><span>Nos installations</span></a></div>", thumb : '', url : ''}); 
-
-
-                $.supersized({
-                    // Functionality
-                    slide_interval      :   5000, // Length between transitions
-                    
-                    transition          :   1, // 0-None, 1-Fade, 2-Slide Top, 3-Slide Right, 4-Slide Bottom, 5-Slide Left, 6-Carousel Right, 7-Carousel Left
-                    transition_speed    :   500, // Speed of transition
-                    slide_links         :   'blank',    // Individual links for each slide (Options: false, 'num', 'name', 'blank')
-                    slides              :   slides,
-                    autoplay            :   1,                  
-                    fit_always          :   0,
-                    performance         :   0,
-                    image_protect       :   1        // Disables image dragging and right click with Javascript
-                });
-
-                jQuery("#pauseplay").toggle(
-                function () {
-                    jQuery(this).addClass("pause");
-                },
-                function () {
-                    jQuery(this).removeClass("pause").addClass("play");
-                });
-
-            jQuery("#pauseplay").stop().fadeTo(150, .5);
-            jQuery("#pauseplay").hover(
-                function () {
-                    jQuery(this).stop().fadeTo(150, 1);
-                },
-                function () {
-                    jQuery(this).stop().fadeTo(150, .5);
-                });
-
-            });
-        </script>
+        <script src="js/config.js"></script>
+        <script src="js/api/accueilApi.js"></script>
+        <script src="js/home-slider.js"></script>
 
     </body>
 </html>
