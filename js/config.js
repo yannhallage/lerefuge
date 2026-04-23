@@ -1,7 +1,7 @@
 window.AppConfig = {
     // URL de base de ton backend (sans slash final), ex: https://api.mon-site.com
-    // apiBaseUrl: "https://refuge-navy.vercel.app",
-    apiBaseUrl: "http://localhost:3000/api",
+    apiBaseUrl: "https://refuge-navy.vercel.app/api",
+    // apiBaseUrl: "http://localhost:3000/api",
     // Route HTTP reelle exposee par ton backend (avec slash initial)
     // Exemples: "/public/accueil", "/api/public/accueil"
     accueilPath: "/public/accueil",
