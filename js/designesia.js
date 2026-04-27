@@ -1181,20 +1181,8 @@ jQuery(document).ready(function () {
                 }
         });
 
-        /* Lenis begin */
-        const lenis = new Lenis()
-
-        lenis.on('scroll', (e) => {
-          console.log(e)
-        })
-
-        function raf(time) {
-          lenis.raf(time)
-          requestAnimationFrame(raf)
-        }
-
-        requestAnimationFrame(raf)
-        /* Lenis end */
+        /* Lenis removed: SmoothScroll is already active above.
+           Running both causes scroll conflicts and lag on long pages. */
 
         // --------------------------------------------------
         // filtering gallery
