@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>Réservation - Le Refuge du Bandama</title>
-        <link rel="icon" href="https://res.cloudinary.com/dpls5pv5x/image/upload/q_auto/f_auto/v1776358298/ftlywstrz9k18rplqtts.png" type="image/png" sizes="16x16">
+        <link rel="icon" href="images/logo/logo-travailler.png" type="image/png">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="keywords" content="">
@@ -120,7 +120,7 @@
         </div>
         <!-- menu overlay close -->
 
-        <div id="background" data-bgimage="url(images/background/2.jpg) fixed"></div>
+        <div id="background" data-bgimage="url(optimized/four/chambre%20160k%202p/1200.webp) fixed"></div>
         <div id="content-absolute">
 
             <!-- subheader -->
@@ -140,6 +140,9 @@
                         <div class="col-12 text-center">
                             <a href="fichier/reservation-message-clients.pdf" class="btn-main" target="_blank" rel="noopener noreferrer">
                                 Voir le message de reservation (PDF)
+                            </a>
+                            <a href="fichier/Carte_Restaurant mise a jour du230426.pdf" class="btn-main ml10" target="_blank" rel="noopener noreferrer">
+                                Voir le menu (PDF)
                             </a>
                         </div>
                     </div>
@@ -187,12 +190,7 @@
                                     <div class="select-room">
                                         <h4>Choisissezionner une chambre</h4>
                                         <select name="Chambre Type" id="room-type" class="form-control">
-                                            <option value="Standart Chambre">Standart Chambre</option>
-                                            <option value="Chambre deluxe">Chambre deluxe</option>
-                                            <option value="Chambre premiere">Chambre premiere</option>
-                                            <option value="Suite familiale">Suite familiale</option>
-                                            <option value="Suite de luxe">Suite de luxe</option>
-                                            <option value="Suite presidentielle">Suite presidentielle</option>
+                                            <option value="">Chargement des chambres...</option>
                                         </select>
                                     </div>
 
@@ -265,6 +263,7 @@
 
         <!-- Javascript Files
     ================================================== -->
+        <script src="js/config.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/designesia.js"></script>
         <script src='https://www.google.com/recaptcha/api.js' async defer></script>
@@ -310,7 +309,92 @@
                     select.appendChild(newOption);
                 }
 
-                document.addEventListener("DOMContentLoaded", selectRoomFromUrl);
+                function getApiConfig() {
+                    var appConfig = window.AppConfig || {};
+                    var apiBase = (appConfig.apiBaseUrl || "").replace(/\/$/, "");
+                    var logementPath = appConfig.logementPath || "/public/logement";
+                    return {
+                        apiBase: apiBase,
+                        logementPath: logementPath
+                    };
+                }
+
+                function populateRooms(rooms) {
+                    var select = document.getElementById("room-type");
+                    if (!select) {
+                        return;
+                    }
+
+                    select.innerHTML = "";
+                    if (!Array.isArray(rooms) || rooms.length === 0) {
+                        var emptyOption = document.createElement("option");
+                        emptyOption.value = "";
+                        emptyOption.textContent = "Aucune chambre disponible";
+                        select.appendChild(emptyOption);
+                        return;
+                    }
+
+                    rooms.forEach(function (room) {
+                        var roomName = room && room.nom_logement ? String(room.nom_logement).trim() : "";
+                        if (!roomName) {
+                            return;
+                        }
+
+                        var option = document.createElement("option");
+                        option.value = roomName;
+                        option.textContent = roomName;
+                        select.appendChild(option);
+                    });
+
+                    if (!select.options.length) {
+                        var invalidOption = document.createElement("option");
+                        invalidOption.value = "";
+                        invalidOption.textContent = "Aucune chambre disponible";
+                        select.appendChild(invalidOption);
+                    }
+                }
+
+                function setFallbackRooms() {
+                    populateRooms([
+                        { nom_logement: "APPARTEMENT 2P" },
+                        { nom_logement: "APPARTEMENT 3P" },
+                        { nom_logement: "SUITES 1ER ÉTAGE" },
+                        { nom_logement: "SUITES-REZ-DE-CHAUSSÉE" }
+                    ]);
+                }
+
+                function loadRooms() {
+                    var config = getApiConfig();
+                    var select = document.getElementById("room-type");
+                    if (!select) {
+                        return Promise.resolve();
+                    }
+
+                    if (!config.apiBase) {
+                        setFallbackRooms();
+                        return Promise.resolve();
+                    }
+
+                    var url = config.apiBase + config.logementPath;
+                    return fetch(url, { method: "GET" })
+                        .then(function (response) {
+                            if (!response.ok) {
+                                throw new Error("Erreur HTTP " + response.status);
+                            }
+                            return response.json();
+                        })
+                        .then(function (payload) {
+                            var rooms = payload && Array.isArray(payload.data) ? payload.data : [];
+                            populateRooms(rooms);
+                        })
+                        .catch(function () {
+                            setFallbackRooms();
+                        });
+                }
+
+                document.addEventListener("DOMContentLoaded", function () {
+                    loadRooms().then(selectRoomFromUrl);
+                });
             })();
         </script>
         <script src="form.js"></script>
