@@ -61,6 +61,29 @@
         return "-";
     }
 
+    function getDescription(logement) {
+        var value = logement.description;
+
+        if (Array.isArray(value)) {
+            var nonEmpty = value.filter(function (item) {
+                return typeof item === "string" && item.trim();
+            });
+            if (nonEmpty.length) {
+                return nonEmpty.join(" ");
+            }
+        }
+
+        if (typeof value === "string" && value.trim()) {
+            return value.trim();
+        }
+
+        if (Array.isArray(logement.specification) && logement.specification.length) {
+            return "Profitez de: " + logement.specification.slice(0, 4).join(", ") + ".";
+        }
+
+        return "Logement confortable pour un sejour paisible.";
+    }
+
     function setText(id, value) {
         var node = document.getElementById(id);
         if (node) {
@@ -185,9 +208,7 @@
     function renderLogement(logement) {
         var title = logement.nom_logement || "Logement";
         var images = getImages(logement);
-        var description = Array.isArray(logement.specification) && logement.specification.length
-            ? "Profitez de: " + logement.specification.slice(0, 4).join(", ") + "."
-            : "Logement confortable pour un sejour paisible.";
+        var description = getDescription(logement);
 
         document.title = title + " - Le Refuge du Bandama";
         setText("room-single-title", title);
