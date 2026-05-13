@@ -1335,11 +1335,11 @@ jQuery(document).ready(function () {
              
              });
              
-            jQuery('#mo-button-open').on("click", function() {
-                $('html,body').addClass("no-scroll");
-
+            jQuery('#mo-button-open').on("click", function(e) {
+                e.stopPropagation();
+                jQuery('html,body').addClass("no-scroll");
+                jQuery('#menu-overlay').css("top", "72px");
                 jQuery('#menu-overlay').fadeIn();
-                jQuery('#menu-overlay').css("top","0");
                 
                 /*$("#mo-menu  > li").each(function(i) {
                     $(this).animate({
@@ -1355,7 +1355,14 @@ jQuery(document).ready(function () {
 
              });
              
-             jQuery('#mo-button-close').on("click", function() {
+            jQuery(document).on("click.moMenuPanel", function (e) {
+                if (!jQuery('#menu-overlay').is(':visible')) return;
+                if (jQuery(e.target).closest('#menu-overlay, #mo-button-open').length) return;
+                jQuery('#mo-button-close').trigger('click');
+            });
+
+             jQuery('#mo-button-close').on("click", function(e) {
+                e.stopPropagation();
                 jQuery('#menu-overlay').fadeOut();
                 /*$("#mo-menu li").finish().delay(500).each(function(i) {
                     $(this).finish().delay(100 * i).queue(function() {
@@ -1366,7 +1373,7 @@ jQuery(document).ready(function () {
                     jQuery('#menu-overlay').css("top","-100%");
                 }
 
-                $('html,body').delay(500).removeClass("no-scroll");
+                jQuery('html,body').delay(500).removeClass("no-scroll");
              });
              
              jQuery('#mo-menu a').on("click", function() {
@@ -1381,6 +1388,7 @@ jQuery(document).ready(function () {
                     if(jQuery('#menu-overlay').hasClass("slideDown")){
                         jQuery('#menu-overlay').css("top","-100%");
                     }
+                    jQuery('html,body').delay(500).removeClass("no-scroll");
                 }
                     
             });
