@@ -560,13 +560,10 @@
 	    			break;
 	    	}
 			
-			$(vars.slide_caption).fadeOut().html('');
 			if ($(vars.slide_caption).length){
 			(api.getField('title')) ?
-			$(vars.slide_caption).fadeOut(base.options.transition_speed, function(){
-			$(this).html(api.getField("title")).fadeIn(base.options.transition_speed,'easeInOutCubic');
-			}) :
-			$(vars.slide_caption).fadeOut().html('');
+			$(vars.slide_caption).stop(true, true).show().html(api.getField("title")) :
+			$(vars.slide_caption).stop(true, true).show().html('');
 			}
 			
 		    return false;	
@@ -672,13 +669,10 @@
 	    			break;
 	    	}
 			
-			$(vars.slide_caption).fadeOut().html('');
 			if ($(vars.slide_caption).length){
 			(api.getField('title')) ?
-			$(vars.slide_caption).fadeOut("slow", function(){
-			$(this).html(api.getField("title")).fadeIn("slow",'easeOutExpo');
-			}) :
-			$(vars.slide_caption).fadeOut().html('');
+			$(vars.slide_caption).stop(true, true).show().html(api.getField("title")) :
+			$(vars.slide_caption).stop(true, true).show().html('');
 			}
 		
 			

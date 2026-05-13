@@ -1,0 +1,9 @@
+{
+  "name": "seaside-html",
+  "private": true,
+  "description": "Scripts utilitaires (images dans working-on-images/)",
+  "scripts": {
+    "optimize-one": "node working-on-images/optimize-one.js",
+    "optimize-images": "node working-on-images/optimize-images.js ./working-on-images/images ./optimized"
+  }
+}

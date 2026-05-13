@@ -12,7 +12,7 @@
 
     function buildSlideTitle(item) {
         var titre = escapeHtml(item.titre || "Bienvenue");
-        return "<div class='slider-text'><h2 class='wow fadeInUp'>" + titre + "</h2><a class='btn-line wow fadeInUp' data-wow-delay='.3s' href='about.html'><span>Nos installations</span></a></div>";
+        return "<div class='slider-text'><h2>" + titre + "</h2><a class='btn-line' href='about.html'><span>Nos installations</span></a></div>";
     }
 
     function mapApiToSlides(items) {
@@ -30,19 +30,19 @@
         return [
             {
                 image: "https://res.cloudinary.com/dpls5pv5x/image/upload/q_auto/f_auto/v1776356904/e2hbjz26coogpuvm1rrr.png",
-                title: "<div class='slider-text'><h2 class='wow fadeInUp'>Detente</h2><a class='btn-line wow fadeInUp' data-wow-delay='.3s' href='about.html'><span>Nos installations</span></a></div>",
+                title: "<div class='slider-text'><h2>Detente</h2><a class='btn-line' href='about.html'><span>Nos installations</span></a></div>",
                 thumb: "",
                 url: ""
             },
             {
                 image: "https://res.cloudinary.com/dpls5pv5x/image/upload/q_auto/f_auto/v1776356714/vdejggo2sgjcr2lmn9zt.jpg",
-                title: "<div class='slider-text'><h2 class='wow fadeInUp'>Comfort</h2><a class='btn-line wow fadeInUp' data-wow-delay='.3s' href='room-2-cols.html'><span>Choisir une chambre</span></a></div>",
+                title: "<div class='slider-text'><h2>Comfort</h2><a class='btn-line' href='room-2-cols.html'><span>Choisir une chambre</span></a></div>",
                 thumb: "",
                 url: ""
             },
             {
                 image: "https://res.cloudinary.com/dpls5pv5x/image/upload/q_auto/f_auto/v1776356720/vec4powfapnoqqtfoy3j.webp",
-                title: "<div class='slider-text'><h2 class='wow fadeInUp'>Heureux</h2><a class='btn-line wow fadeInUp' data-wow-delay='.3s' href='about.html'><span>Nos installations</span></a></div>",
+                title: "<div class='slider-text'><h2>Heureux</h2><a class='btn-line' href='about.html'><span>Nos installations</span></a></div>",
                 thumb: "",
                 url: ""
             }
