@@ -925,10 +925,26 @@ header:not(.header-mobile):not(.force-header-mobile)
   position: absolute;
   display: block;
   width: 30px;
+  height: 28px;
   right: 40px;
   margin-top: 22px;
-  overflow: hidden;
+  overflow: visible;
   cursor: pointer
+}
+
+#mo-button-open::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0.72);
+  opacity: 0;
+  pointer-events: none;
+  animation: mo-button-click-cue 5s ease-out infinite;
 }
 
 #mo-button-open div {
@@ -936,6 +952,59 @@ header:not(.header-mobile):not(.force-header-mobile)
   height: 3px;
   background: #ffffff;
   margin-bottom: 7px;
+  animation: mo-button-line-bounce 5s ease-in-out infinite;
+  transform-origin: center;
+}
+
+#mo-button-open div:nth-child(2) {
+  animation-delay: 0.08s;
+}
+
+#mo-button-open div:nth-child(3) {
+  animation-delay: 0.16s;
+}
+
+@keyframes mo-button-line-bounce {
+  0%,
+  6%,
+  12%,
+  18%,
+  100% {
+    transform: translateY(0);
+  }
+
+  3% {
+    transform: translateY(-5px);
+  }
+
+  9% {
+    transform: translateY(-3px);
+  }
+
+  15% {
+    transform: translateY(-1px);
+  }
+}
+
+@keyframes mo-button-click-cue {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.72);
+  }
+
+  4% {
+    opacity: 0.9;
+  }
+
+  18% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.12);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.12);
+  }
 }
 #mo-button-open.mo-bo-s1 {
   top: 10px;
