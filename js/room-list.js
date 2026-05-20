@@ -115,7 +115,7 @@
             "    <div class='d-image'>",
             "      <div class='d-label'>Disponible</div>",
             "      <div class='d-details'>",
-            "        <span class='d-meta-1'><img src='images/ui/user.svg' alt=''>" + capacity + " personnes</span>",
+            "        <span class='d-meta-1'><img src='images/ui/user.svg' alt=''> " + (1) + " à " + capacity + " personnes</span>",
             "        <span class='d-meta-2'><img src='images/ui/floorplan.svg' alt=''>" + surface + " m2</span>",
             "      </div>",
             "      <a href='" + detailsUrl + "'>",
