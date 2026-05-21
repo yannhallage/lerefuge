@@ -68,6 +68,27 @@
         return 2;
     }
 
+    function formatCapacity(value) {
+        var capacity = Math.floor(toNumber(value) || 0);
+        if (capacity <= 0) {
+            return "";
+        }
+
+        if (capacity === 2) {
+            return "1, 2";
+        }
+
+        if (capacity % 2 === 0) {
+            var evenValues = [];
+            for (var i = 2; i <= capacity; i += 2) {
+                evenValues.push(i);
+            }
+            return evenValues.join(", ");
+        }
+
+        return "1 &agrave; " + capacity;
+    }
+
     function getSurface(logement) {
         var values = [logement.aire_chambre, logement.superficie, logement.surface, logement.area, logement.dimension];
         for (var i = 0; i < values.length; i += 1) {
@@ -104,7 +125,7 @@
         var image = escapeHtml(firstImage(logement));
         var logementId = escapeHtml(logement.logement_id || "");
         var detailsUrl = logementId ? "room-single.html?id=" + logementId : "room-single.html";
-        var capacity = escapeHtml(getCapacity(logement));
+        var capacity = formatCapacity(getCapacity(logement));
         var surface = escapeHtml(getSurface(logement));
         var price = getPrice(logement);
         var detailsText = price !== null ? "Consulter - " + escapeHtml(formatPrice(price)) + " FCFA" : "Consulter";
@@ -115,7 +136,7 @@
             "    <div class='d-image'>",
             "      <div class='d-label'>Disponible</div>",
             "      <div class='d-details'>",
-            "        <span class='d-meta-1'><img src='images/ui/user.svg' alt=''> " + (1) + " à " + capacity + " personnes</span>",
+            "        <span class='d-meta-1'><img src='images/ui/user.svg' alt=''> " + capacity + " personnes</span>",
             "        <span class='d-meta-2'><img src='images/ui/floorplan.svg' alt=''>" + surface + " m2</span>",
             "      </div>",
             "      <a href='" + detailsUrl + "'>",
